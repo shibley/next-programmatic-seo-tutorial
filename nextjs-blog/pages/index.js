@@ -2,11 +2,11 @@ import Head from 'next/head'
 
 export async function getStaticProps({params}) {
   // Let's fetch the latest top ranking items in a category
-  const res = await fetch('http://localhost:6400/products/categories')
-  const categories = await res.json()
+  const res = await fetch('http://localhost:6400/courses/states')
+  const states = await res.json()
 
   return { 
-    props: {  categories },
+    props: {  states },
     // Next.js will attempt to re-generate the page:
     // - When a request comes in
     // - At most once every 10 seconds
@@ -15,7 +15,7 @@ export async function getStaticProps({params}) {
 }
 
 export default function Home(props) {
-  const categories = props.categories;
+  const states = props.states;
   let i = 0;
   return (
     <div className="container">
@@ -26,17 +26,17 @@ export default function Home(props) {
 
       <main>
         <h1 className="title">
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          DiscGolfSite.com
         </h1>
 
         <p className="description">
-          Our best category pages:
+          Disc golf courses by state:
         </p>
 
         <div className="grid">
-          {categories.map(category => {
-            return (<a href={`/best/${category}`} key={i++} className="card">
-              <h3>{category}</h3>
+          {states.map(state => {
+            return (<a href={`/courses/${state}`} key={i++} className="card">
+              <h3>{state}</h3>
             </a>)
           })}
         </div>

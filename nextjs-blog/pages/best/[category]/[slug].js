@@ -1,16 +1,19 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { NextSeo } from 'next-seo';
+import { NextSeo, ProductJsonLd } from 'next-seo';
 
 export async function getStaticPaths() {
 
-  // We need to fetch all of the categories from our DB
-  const res = await fetch('http://localhost:6400/products/categories')
-  const categories = await res.json()
+  // We need to fetch all of the items from our DB by category
+  const res = await fetch(`http://localhost:6400/products/`)
+  const products = await res.json()
 
   // We need to adhere to the Next.js getStaticPaths structure
   // https://nextjs.org/docs/basic-features/data-fetching/get-static-paths
-  let paths = categories.map((x)=>{return{'params': {'category': x}}})
+  //let paths = products.map((x)=>{return{'params': {'product': [x.slug]}}})
+  const paths = products.map((product) => ({
+    params: { category: product.category, slug: product.slug },
+  }))
 
   // For blocking see: https://nextjs.org/docs/api-reference/data-fetching/get-static-paths#fallback-blocking
   return {
@@ -20,19 +23,20 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({params}) {
-
+  const { category, slug } = params
+  //console.log({params});
   // Let's fetch the latest top ranking items in a category from our DB
-  const res = await fetch(`http://localhost:6400/products/category/${params.category}`)
-  const products = await res.json()
+  const res = await fetch(`http://localhost:6400/products/${slug}`)
+  const product = await res.json()
 
   // Let's pick the 5 best ranked ones
-  const topProducts = products.sort((a,b) => b.rating - a.rating).slice(0, 5);
+  //const topProducts = products.sort((a,b) => b.rating - a.rating).slice(0, 5);
 
   // Every time we statically generate this page we will have the time-stamped.
   const stats = new Date().toString()
 
   return { 
-    props: { stats: stats, topProducts },
+    props: { stats: stats, product },
     // Next.js will attempt to re-generate the page:
     // - When a request comes in
     // - At most once every 10 seconds
@@ -40,43 +44,34 @@ export async function getStaticProps({params}) {
   };
 }
 
-export default function Best(props) {
-  const router = useRouter()
-  const { category } = router.query
+export default function Slug(props) {
+  // const router = useRouter()
+  // const { productId } = router.query
   const stats = props.stats;
-  const products = props.topProducts;
-  let i = 0;
+  const product = props.product;
 
   return (
     <div className="container">
       <Head>
-        <title>10 Best {category} Products</title>
+        <title>{product}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <NextSeo
-        title={`10 Best ${category} Products`}
-        description={`10 Best ${category} Products for bestecommerce.com updated daily.`}
+        title={`{product.title}`}
+        description={`{product.description}`}
       />
 
       <main>
         <h1 className="title">
-          10 Best {category} Products
+          {product.title}
         </h1>
         <h3><a href="/">Home</a></h3>
         <p className="description">
-          These are our best products for the {category}, <br /> Updated at: {stats}
+          {product.description} <br /> 
+          <p><i>Price: ${product.price}, with rating of: {product.rating}/100</i></p>
+          Updated at: {stats}
         </p>
-
-        <div className="grid">
-          { products.map(product => {
-            return (<a href={`/best/${category}/${product.slug}`} key={i++} className="card">
-              <h3>{product.title}</h3>
-              <p>{product.description}</p>
-              <p><i>Price: ${product.price}, with rating of: {product.rating}/100</i></p>
-            </a>)
-          })}
-        </div>
       </main>
 
       <footer>

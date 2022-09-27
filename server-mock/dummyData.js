@@ -17,6 +17,7 @@ function between(min, max) {
 
 for (let i = 0; i < amountOfData; i++) {
     const data = {
+      'id': i + 1,
       'title': faker.commerce.productName(),
       'price': faker.commerce.price(),
       'description': faker.commerce.productDescription(),

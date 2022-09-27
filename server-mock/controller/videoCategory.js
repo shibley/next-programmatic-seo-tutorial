@@ -1,86 +1,75 @@
-const Product = require("../model/product");
+const VideoCategory = require("../model/videoCategory");
+const Video = require("../model/video");
 
-module.exports.getAllProducts = (req, res) => {
+module.exports.getAllVideoCategories = (req, res) => {
   const limit = Number(req.query.limit) || 0;
   const sort = req.query.sort == "desc" ? -1 : 1;
-
-  Product.find()
+console.log(VideoCategory);
+  VideoCategory.find()
     .select(["-_id"])
     .limit(limit)
     .sort({ id: sort })
-    .then((products) => {
-      res.json(products);
+    .then((videoCategories) => {
+      console.log(videoCategories)
+      res.json(videoCategories);
     })
     .catch((err) => console.log(err));
 };
 
-module.exports.getProduct = (req, res) => {
+module.exports.getVideoCategory = (req, res) => {
   const id = req.params.id;
 
-  Product.findOne({
+  VideoCategory.findOne({
     id,
   })
     .select(["-_id"])
-    .then((product) => {
-      res.json(product);
+    .then((videoCategory) => {
+      res.json(videoCategory);
     })
     .catch((err) => console.log(err));
 };
 
-module.exports.getProductBySlug = (req, res) => {
-  const slug = req.params.slug;
-
-  Product.findOne({
-    slug,
-  })
-    .select(["-_id"])
-    .then((product) => {
-      res.json(product);
-    })
-    .catch((err) => console.log(err));
-};
-
-module.exports.getProductCategories = (req, res) => {
-  Product.distinct("category")
+module.exports.getVideoCategories = (req, res) => {
+  VideoCategory.distinct("category")
     .then((categories) => {
       res.json(categories);
     })
     .catch((err) => console.log(err));
 };
 
-module.exports.getProductsInCategory = (req, res) => {
-  const category = req.params.category;
+module.exports.getVideosInCategory = (req, res) => {
+  const categoryId = req.params.categoryId;
   const limit = Number(req.query.limit) || 0;
   const sort = req.query.sort == "desc" ? -1 : 1;
 
-  Product.find({
-    category,
+  Video.find({
+    category_id: categoryId,
   })
     .select(["-_id"])
     .limit(limit)
     .sort({ id: sort })
-    .then((products) => {
-      res.json(products);
+    .then((videos) => {
+      res.json(videos);
     })
     .catch((err) => console.log(err));
 };
 
-module.exports.addProduct = async (req, res) => {
+module.exports.addVideoCategory = async (req, res) => {
   if (typeof req.body == undefined) {
     res.json({
       status: "error",
       message: "data is undefined",
     });
   } else {
-    const productCount = await Product.find()
+    const videoCategoryCount = await VideoCategory.find()
       .countDocuments(function (err, count) {
         return count || 0;
       });
 
     
-    console.log(productCount, req.body)
+    console.log(videoCategory, req.body)
 
-    const product = new Product({
+    const videoCategory = new VideoCategory({
       id: req.body.id,
       title: req.body.title,
       price: req.body.price,
@@ -90,15 +79,15 @@ module.exports.addProduct = async (req, res) => {
       rating: req.body.rating,
     });
 
-    product.save()
-      .then(product => res.json(product))
+    videoCategory.save()
+      .then(videoCategory => res.json(videoCategory))
       .catch(err => console.log(err))
     // res.json(product);
 
   }
 };
 
-module.exports.editProduct = (req, res) => {
+module.exports.editVideoCategory = (req, res) => {
   if (typeof req.body == undefined || req.params.id == null) {
     res.json({
       status: "error",
@@ -116,19 +105,19 @@ module.exports.editProduct = (req, res) => {
   }
 };
 
-module.exports.deleteProduct = (req, res) => {
+module.exports.deleteVideoCategory = (req, res) => {
   if (req.params.id == null) {
     res.json({
       status: "error",
-      message: "cart id should be provided",
+      message: "id should be provided",
     });
   } else {
-    Product.findOne({
+    VideoCategory.findOne({
       id: req.params.id,
     })
       .select(["-_id"])
-      .then((product) => {
-        res.json(product);
+      .then((videoCategory) => {
+        res.json(videoCategory);
       })
       .catch((err) => console.log(err));
   }

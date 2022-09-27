@@ -8,11 +8,14 @@ const path = require("path");
 const app = express();
 
 //port
+
 const port = 6400;
-const mongoCreds = process.env.MONGO_MOCK_DB_CREDS; // process.env.MONGO_MOCK_DB_CREDS
+const mongoCreds = `mongodb://127.0.0.1:27017/`;//admin:123456@process.env.MONGO_MOCK_DB_CREDS; // process.env.MONGO_MOCK_DB_CREDS
 
 //routes
 const productRoute = require("./routes/product");
+const courseRoute = require("./routes/course");
+const videoCategoryRoute = require("./routes/videoCategory");
 const homeRoute = require("./routes/home");
 const cartRoute = require("./routes/cart");
 const userRoute = require("./routes/user");
@@ -33,6 +36,8 @@ app.disable("view cache");
 
 app.use("/", homeRoute);
 app.use("/products", productRoute);
+app.use("/courses", courseRoute);
+app.use("/videoCategories", videoCategoryRoute);
 app.use("/carts", cartRoute);
 app.use("/users", userRoute);
 app.use("/auth", authRoute);
