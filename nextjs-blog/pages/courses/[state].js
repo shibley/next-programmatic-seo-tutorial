@@ -25,8 +25,8 @@ export async function getStaticProps({params}) {
   const res = await fetch(`http://localhost:6400/courses/state/${params.state}`)
   const courses = await res.json()
 
-  // Let's pick the 5 best ranked ones
-  const topCourses = courses.sort((a,b) => b.rating - a.rating).slice(0, 5);
+  // Let's pick the 50 best ranked ones
+  const topCourses = courses.sort((a,b) => b.rating - a.rating).sort((a,b) => b.name - a.name).slice(0, 50);
 
   // Every time we statically generate this page we will have the time-stamped.
   const stats = new Date().toString()
@@ -65,7 +65,8 @@ export default function State(props) {
         </h1>
         <h3><a href="/">Home</a></h3>
         <p className="description">
-          These are our best courses for {state}, <br /> Updated at: {stats}
+          These are our best courses for {state}
+          {/* , <br /> Updated at: {stats} */}
         </p>
 
         <div className="grid">
@@ -78,19 +79,18 @@ export default function State(props) {
                 <div className="company-features">
                   <div className="company-score">
                     <div className="company-score-bar">
-                      {/* <div className="company-score-tube" style="{{width: 91%}}"></div> */}
+                      <div className="company-score-tube" style={{"width" : (course.rating * 20) + "%"}}></div>
                     </div>
-                    <div className="company-score-number" data-tip="Work-life balance score based on criteria at top">91<span className="small">/ 100</span></div>
+                    <div className="company-score-number" data-tip="Work-life balance score based on criteria at top">{course.rating}<span className="small">/ 5</span></div>
                   </div>
                 </div>
               </div>
               <div className="company-tile-middle">
-                <p className="company-name-desc">{course.name}</p>
-                <p className="reduced_hours">{course.rating}</p>
+                <p className="company-name-desc">{course.name}, {course.city} - {course.zip}</p>              
               </div>
               <div className="company-tile-bottom">
                 <div className="company-tile-left">
-                  <ul className="row company-details">
+                  {/* <ul className="row company-details">
                     <li className="green company-working-hours">32
                     </li>
                     <li className="company-num-employees">50-100
@@ -98,12 +98,12 @@ export default function State(props) {
                     <li className="company-num-jobs">6
                     </li>
                     <li className="company-location">Remote, many locations</li>
-                  </ul>
+                  </ul> */}
                 </div>
                 <div className="company-tile-right">
-                  <div className="company-fdw company-four-day-week">
+                  {/* <div className="company-fdw company-four-day-week">
                     <div>4 days @ 80% salary</div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

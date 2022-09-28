@@ -1,13 +1,13 @@
 const Course = require("../model/course");
 
 module.exports.getAllCourses = (req, res) => {
-  const limit = Number(req.query.limit) || 0;
-  const sort = req.query.sort == "desc" ? -1 : 1;
-console.log(req.query);
-  Course.find()
+  const limit = 4000;//Number(req.query.limit) || 0;
+  const sort = -1//req.query.sort == "desc" ? -1 : 1;
+//console.log(req.query);
+  Course.find({ "rating": { $ne: null } })
     .select(["-_id"])
     .limit(limit)
-    .sort({ id: sort })
+    .sort({ rating: sort })
     .then((Courses) => {
       res.json(Courses);
     })
@@ -50,15 +50,15 @@ module.exports.getStates = (req, res) => {
 
 module.exports.getCoursesInState = (req, res) => {
   const state = req.params.state;
-  const limit = Number(req.query.limit) || 0;
-  const sort = req.query.sort == "desc" ? -1 : 1;
+  const limit = Number(req.query.limit) || 100;
+  const sort = -1;//req.query.sort == "desc" ? -1 : 1;
   //console.log(req.query.limit);
   Course.find({
-    state,
+    state, "rating": { $ne: null }
   })
     .select(["-_id"])
     .limit(limit)
-    .sort({ id: sort })
+    .sort({ rating: sort })
     .then((Courses) => {
       //console.log(res.json(Courses));
       res.json(Courses);
