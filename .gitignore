@@ -20,3 +20,5 @@ server-mock/.env
 nextjs-blog/package-lock.json
 
 server-mock/data/USvideos.csv.zip
+
+server-mock/data/
