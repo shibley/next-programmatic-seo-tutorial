@@ -18,15 +18,15 @@ const courseSchema = new schema({
     },
     city:{
         type:String,
-        required:true
+        required:false
     },
     state:{
         type:String,
-        required:true
+        required:false
     },
     zip:{
         type:String,
-        required:true
+        required:false
     },
     holecount:{
         type:Number,
@@ -37,7 +37,9 @@ const courseSchema = new schema({
         required:false
     },
     latitude:Number,
-    longitude:Number
+    longitude:Number,
+    photoreference:String,
+    image:String
 })
 
 module.exports = mongoose.model('course',courseSchema)

@@ -1,7 +1,7 @@
 const Course = require("../model/course");
 
 module.exports.getAllCourses = (req, res) => {
-  const limit = 4000;//Number(req.query.limit) || 0;
+  const limit = 10000;//Number(req.query.limit) || 0;
   const sort = -1//req.query.sort == "desc" ? -1 : 1;
 //console.log(req.query);
   Course.find({ "rating": { $ne: null } })
@@ -50,7 +50,7 @@ module.exports.getStates = (req, res) => {
 
 module.exports.getCoursesInState = (req, res) => {
   const state = req.params.state;
-  const limit = Number(req.query.limit) || 100;
+  const limit = Number(req.query.limit) || 1000;
   const sort = -1;//req.query.sort == "desc" ? -1 : 1;
   //console.log(req.query.limit);
   Course.find({
@@ -64,6 +64,31 @@ module.exports.getCoursesInState = (req, res) => {
       res.json(Courses);
     })
     .catch((err) => console.log(err));
+};
+
+module.exports.editCourse = (req, res) => {
+  if (typeof req.body == undefined || req.params.id == null) {
+    res.json({
+      status: "error",
+      message: "something went wrong! check your sent data",
+    });
+  } else {
+    const id = req.params.id;
+    Course.findOne({
+      id,
+    })
+      .select(["-_id"])
+      .then((course) => {
+        const query = { id: id };
+        Course.findOneAndUpdate(query, { photoreference: req.body.photoreference, image: req.body.image })
+          .then(result => console.log(result))
+          .catch(err => console.log(err));
+
+          res.json(course);
+      })
+      .catch((err) => console.log(err));
+    
+    }
 };
 
 // module.exports.addProduct = async (req, res) => {
@@ -96,24 +121,6 @@ module.exports.getCoursesInState = (req, res) => {
 //       .catch(err => console.log(err))
 //     // res.json(product);
 
-//   }
-// };
-
-// module.exports.editProduct = (req, res) => {
-//   if (typeof req.body == undefined || req.params.id == null) {
-//     res.json({
-//       status: "error",
-//       message: "something went wrong! check your sent data",
-//     });
-//   } else {
-//     res.json({
-//       id: req.params.id,
-//       title: req.body.title,
-//       price: req.body.price,
-//       description: req.body.description,
-//       image: req.body.image,
-//       category: req.body.category,
-//     });
 //   }
 // };
 

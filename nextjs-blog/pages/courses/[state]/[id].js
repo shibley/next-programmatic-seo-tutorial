@@ -1,6 +1,8 @@
 import Head from 'next/head';
+import axios from "axios";
 import { useRouter } from 'next/router';
 import { NextSeo, ProductJsonLd } from 'next-seo';
+//const linkPreviewGenerator = require("link-preview-generator");
 
 export async function getStaticPaths() {
 
@@ -28,6 +30,49 @@ export async function getStaticProps({params}) {
   // Let's fetch the latest top ranking items in a category from our DB
   const res = await fetch(`http://localhost:6400/courses/${id}`)
   const course = await res.json()
+
+  //get image if none found
+  if(course.photoreference == null)
+  {
+    //console.log(process.env.REACT_APP_PLACES_API_KEY);
+    const placesRequestUrl = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${course.name + "," + course.state}&key=${process.env.REACT_APP_PLACES_API_KEY}&inputtype=textquery&fields=name,photos`;
+    const initialPlacesRequest = await axios
+    .get(placesRequestUrl)
+    .catch(console.error);
+
+    var photoRef = initialPlacesRequest?.data?.candidates?.[0]?.photos?.[0]?.photo_reference;
+    //console.log(photoRef);
+
+    if (typeof photoRef == undefined || photoRef == null)
+    {
+        //lets try city only
+        const placesRequestUrl = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${course.city + "," + course.state}&key=${process.env.REACT_APP_PLACES_API_KEY}&inputtype=textquery&fields=name,photos`;
+        const initialPlacesRequest = await axios
+        .get(placesRequestUrl)
+        .catch(console.error);
+    
+        photoRef = initialPlacesRequest?.data?.candidates?.[0]?.photos?.[0]?.photo_reference;
+    }
+    if(photoRef)
+    {
+      const imageLookupURL = `https://maps.googleapis.com/maps/api/place/photo?photoreference=${photoRef}&key=${process.env.REACT_APP_PLACES_API_KEY}&maxwidth=700&maxheight=700`;
+      const imageURLQuery = await fetch(imageLookupURL)
+      .then(r => r.url)
+      .catch(console.error);
+
+      //console.log(imageURLQuery);
+      //const image = URL.createObjectURL(imageURLQuery); //declared earlier
+      //console.log(image);
+      const requestOptions = {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ photoreference: photoRef, image: imageURLQuery })
+      };
+      const response = await fetch(`http://localhost:6400/courses/${id}`, requestOptions)
+      .then(response => response.json())
+      console.log(response);
+    }
+  }
 
   // Let's pick the 5 best ranked ones
   //const topProducts = products.sort((a,b) => b.rating - a.rating).slice(0, 5);
@@ -70,7 +115,8 @@ export default function Id(props) {
         <p className="description">
           {course.name} <br /> 
           <p><i>Rating: {course.rating}</i></p>
-          Updated at: {stats}
+          <img src={course.image} alt={course.name} />
+          {/* Updated at: {stats} */}
         </p>
       </main>
 
