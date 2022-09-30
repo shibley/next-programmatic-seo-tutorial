@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "axios": "^0.27.2",
+    "bootstrap": "^5.2.1",
     "link-preview-generator": "^1.1.0",
     "next": "latest",
     "next-seo": "^5.2.0",

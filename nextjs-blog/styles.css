@@ -139,3 +139,247 @@ box-sizing: border-box;
       flex-direction: column;
     }
   }
+
+  .company-tile {
+    border: 1px solid #cedeef;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    margin-bottom: 20px;
+    overflow: visible;
+    padding: 20px 30px;
+    position: relative;
+    transition: opacity .18s ease-out, border .18s ease-out, background .18s ease-out, color .18s ease-out;
+  }
+  
+  @media (max-width: 767px) {
+    .company-tile {
+      border-bottom-color: initial;
+      border-bottom-style: none;
+      border-bottom-width: initial;
+      border-radius: 0;
+      border-right-color: initial;
+      border-right-style: none;
+      border-right-width: initial;
+      line-height: 1;
+      margin-bottom: 0;
+      padding: 30px 20px;
+    }
+  }
+  
+  .company-tile .company-tile-top {
+    display: flex;
+    flex-direction: row;
+    padding-left: 0;
+    width: 100%;
+  }
+  
+  .company-tile .company-tile-bottom {
+    display: flex;
+    padding-top: 10px;
+  }
+  
+  @media (max-width: 767px) {
+    .company-tile .company-tile-bottom {
+      padding-top: 5px;
+    }
+  }
+  
+  .company-tile .company-tile-middle p {
+    font-size: 1.6rem;
+    line-height: 1.5;
+    margin-bottom: 0;
+    padding: 7.5px 0;
+  }
+  
+  .company-tile.show-hover:hover {
+    background-color: #e9f0f8;
+    border-color: #c6d9ec;
+  }
+  
+  .company-tile .company-tile-top .company-features {
+    width: 70%;
+  }
+  
+  @media (max-width: 767px) {
+    .company-tile .company-tile-top .company-features {
+      width: 40%;
+    }
+  }
+  
+  .company-tile .company-tile-top .company-tile-title {
+    align-self: flex-start;
+    color: #191c20;
+    font-size: 2.31rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 5px;
+    padding-top: 0;
+    text-align: left;
+    width: 30%;
+  }
+  
+  @media (max-width: 767px) {
+    .company-tile .company-tile-top .company-tile-title {
+      font-size: 2.1rem;
+      padding-bottom: 5px;
+      padding-left: 40px;
+      white-space: normal;
+      width: 80%;
+    }
+  }
+  
+  .company-tile .company-tile-middle .reduced_hours {
+    color: #55616d;
+    margin-bottom: 0;
+  }
+  
+  @media (max-width: 767px) {
+    .company-tile .company-tile-middle .reduced_hours {
+      display: none;
+    }
+  }
+  
+  .company-tile .company-tile-bottom .company-tile-left {
+    width: 70%;
+  }
+  
+  @media (max-width: 767px) {
+    .company-tile .company-tile-bottom .company-tile-left {
+      width: 60%;
+    }
+  }
+  
+  .company-tile .company-tile-bottom .company-tile-right {
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    padding-left: 0;
+    text-align: right;
+    width: 30%;
+  }
+  
+  @media (max-width: 767px) {
+    .company-tile .company-tile-bottom .company-tile-right {
+      align-items: center;
+      width: 40%;
+    }
+  }
+  
+  .company-tile .company-tile-top .company-features .company-score {
+    text-align: right;
+  }
+  
+  .company-tile .company-tile-top .company-tile-title:hover {
+    color: #e21752;
+    text-decoration: none;
+  }
+  
+  .company-tile .company-tile-bottom .company-tile-left .company-details {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .company-tile .company-tile-bottom .company-tile-right .company-fdw {
+    color: #55616d;
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 1.25;
+    margin: 0;
+    padding: 0;
+    text-align: right;
+  }
+  
+  @media (max-width: 767px) {
+    .company-tile .company-tile-bottom .company-tile-right .company-fdw {
+      font-size: 1.5rem;
+    }
+  }
+  
+  .company-tile .company-tile-bottom .company-tile-left .company-details li {
+    color: #282e34;
+    display: inline-block;
+    font-size: 1.6rem;
+    list-style: none;
+    margin-bottom: 0;
+    margin-right: 20px;
+  }
+  
+  @media (max-width: 767px) {
+    .company-tile .company-tile-bottom .company-tile-left .company-details li {
+      display: block;
+    }
+  }
+  
+  .company-tile .company-tile-top .company-features .company-score .company-score-bar {
+    border: 1px solid #b7cfe7;
+    border-radius: 7.5px;
+    display: inline-block;
+    height: 15px;
+    margin-right: 10px;
+    max-width: 100%;
+    padding: 2.5px;
+    width: 140px;
+  }
+  
+  @media (max-width: 767px) {
+    .company-tile .company-tile-top .company-features .company-score .company-score-bar {
+      display: none;
+    }
+  }
+  
+  .company-tile .company-tile-top .company-features .company-score .company-score-number {
+    color: #191c20;
+    display: inline-block;
+    font-size: 2.25rem;
+    font-weight: 400;
+    margin-left: 10px;
+  }
+  
+  @media (max-width: 767px) {
+    .company-tile .company-tile-top .company-features .company-score .company-score-number {
+      font-size: 2.5rem;
+    }
+  }
+  
+  .company-tile .company-tile-bottom .company-tile-left .company-details li:last-child {
+    margin-right: 0;
+  }
+  
+  @media (max-width: 767px) {
+    .company-tile .company-tile-bottom .company-tile-left .company-details li.company-num-employees {
+      display: none;
+    }
+  }
+  
+  .company-tile .company-tile-top .company-features .company-score .company-score-bar .company-score-tube {
+    background-color: #00ac07;
+    border-radius: 5px;
+    border-style: none;
+    height: 100%;
+  }
+  
+  .company-tile .company-tile-top .company-features .company-score .company-score-number .small {
+    padding-left: 2.5px;
+  }
+  
+  :disabled {
+    cursor: not-allowed !important;
+  }
+  
+  :focus {
+    outline: 0 !important;
+  }
+  
+  .green {
+    color: #007905 !important;
+  }
+  
+  @media (max-width: 767px) {
+    .company-tile {
+      border-left-color: initial !important;
+      border-left-style: none !important;
+      border-left-width: initial !important;
+    }
+  }
