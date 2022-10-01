@@ -50,67 +50,50 @@ export default function State(props) {
   return (
     <div className="container">
       <Head>
-        <title>10 Best {state} Courses</title>
+        <title>Top Courses in {state}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <NextSeo
-        title={`10 Best ${state} Products`}
-        description={`10 Best ${state} Courses for discgolfsite.com updated daily.`}
+        title={`Top Courses in ${state}`}
+        description={`Top Courses in ${state}`}
       />
 
       <main>
         <h1 className="title">
-          Best {state} Courses
+          Top Courses in {state}
         </h1>
-        <h3><a href="/">Home</a></h3>
+
         <p className="description">
-          These are our best courses for {state}
+          These are our best courses for {state} rated by the PDGA
           {/* , <br /> Updated at: {stats} */}
         </p>
 
         <div className="grid">
           { courses.map(course => {
             return (<a href={`/courses/${state}/${course.id}`} key={i++} className="card">
+              <h4>{course.name}</h4>
+              <p>{course.city}, {course.state} - {course.zip}</p>         
               <div className="row company-tile show-hover inherited-styles-for-exported-element">
-              <div className="inner-triangle"></div>
+              {/* <div className="inner-triangle"></div> */}
               <div className="company-tile-top">
-                {/* <h3 className="company-tile-title">Close</h3> */}
                 <div className="company-features">
                   <div className="company-score">
                     <div className="company-score-bar">
                       <div className="company-score-tube" style={{"width" : (course.rating * 20) + "%"}}></div>
                     </div>
-                    <div className="company-score-number" data-tip="Work-life balance score based on criteria at top">{course.rating}<span className="small">/ 5</span></div>
+                    
                   </div>
                 </div>
-              </div>
-              <div className="company-tile-middle">
-                <p className="company-name-desc">{course.name}, {course.city} - {course.zip}</p>              
-              </div>
-              <div className="company-tile-bottom">
-                <div className="company-tile-left">
-                  {/* <ul className="row company-details">
-                    <li className="green company-working-hours">32
-                    </li>
-                    <li className="company-num-employees">50-100
-                    </li>
-                    <li className="company-num-jobs">6
-                    </li>
-                    <li className="company-location">Remote, many locations</li>
-                  </ul> */}
-                </div>
-                <div className="company-tile-right">
-                  {/* <div className="company-fdw company-four-day-week">
-                    <div>4 days @ 80% salary</div>
-                  </div> */}
-                </div>
+                <div><span className="small">{course.rating} / 5</span></div>
               </div>
             </div>
             </a>)
           })}
         </div>
       </main>
+      <h3><a href="/">Home</a></h3>
     </div>
+    
   )
 }

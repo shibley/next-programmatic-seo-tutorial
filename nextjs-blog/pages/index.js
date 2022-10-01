@@ -19,13 +19,7 @@ export default function Home(props) {
   return (
     <div className="container">
       <main>
-        <h1 className="title">
-          DiscGolfSite.com
-        </h1>
-
-        <p className="description">
-          Disc golf courses by state:
-        </p>
+        <h1 class="hero-title">Easily Find Disc golf courses by state</h1>
 
         <div className="grid">
           {states.map(state => {

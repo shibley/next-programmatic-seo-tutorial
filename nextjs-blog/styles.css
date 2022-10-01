@@ -11,17 +11,72 @@ font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
 box-sizing: border-box;
 }
 
-.container {
-    min-height: 100vh;
-    padding: 0 0.5rem;
+#purpleBar {
+    width: 100%;
+    height: 10px;
+    background-color: #05bb6c;
+}
+nav {
+    display: -webkit-flex;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.nav-logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #102a43;
+}
+
+.hero-title {
+    max-width: 690px;
+    text-align: center;
+    margin: 40px 0 20px;
+}
+/* 
+@media (min-width: 1200px){
+    .container, .container-lg, .container-md, .container-sm, .container-xl {
+        max-width: 1140px;
+    }
+}
+
+@media (min-width: 992px){
+    .container, .container-lg, .container-md, .container-sm {
+        max-width: 960px;
+    }
+}
+@media (min-width: 768px){
+    .container, .container-md, .container-sm {
+        max-width: 720px;
+    }
+}
+@media (min-width: 576px){
+    .container, .container-sm {
+        max-width: 540px;
+    }
+}
+.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+} */
+
+/* @media (min-width: 1200px){
+    .h3 {
+        font-size: 1.75rem;
+    }
+}
+
+h3 {
+    font-size: -webkit-calc(1.3rem + .6vw);
+    font-size: calc(1.3rem + .6vw);
+} */
 
   main {
-    padding: 5rem 0;
+    padding: 1rem 0;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -103,7 +158,7 @@ box-sizing: border-box;
     margin: 1rem;
     flex-basis: 45%;
     padding: 1.5rem;
-    text-align: left;
+    text-align: center;
     color: inherit;
     text-decoration: none;
     border: 1px solid #eaeaea;
@@ -130,7 +185,11 @@ box-sizing: border-box;
   }
 
   .logo {
-    height: 1em;
+    min-height: 1vh;
+    padding: 0 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   @media (max-width: 600px) {
@@ -172,7 +231,7 @@ box-sizing: border-box;
     display: flex;
     flex-direction: row;
     padding-left: 0;
-    width: 100%;
+    /* width: 100%; */
   }
   
   .company-tile .company-tile-bottom {
@@ -383,3 +442,16 @@ box-sizing: border-box;
       border-left-width: initial !important;
     }
   }
+
+  /* CSS snippet */
+.comparison-card-image {
+    width: 500px;
+    height: 270px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    }
+    .comparison-card-image img {
+    opacity: 0;
+    }

@@ -98,25 +98,49 @@ export default function Id(props) {
   return (
     <div className="container">
       <Head>
-        <title>{course}</title>
+        <title>{course.name}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <NextSeo
-        title={`{course.name}`}
-        description={`{course.name}`}
+        title={course.name}
+        description={course.name + " " + course.state}
       />
 
       <main>
-        <h1 className="title">
+        <h4 className="title">
           {course.name}
-        </h1>
-        <h3><a href="/">Home</a></h3>
+        </h4>
+        <br />
         <p className="description">
-          {course.name} <br /> 
-          <p><i>Rating: {course.rating}</i></p>
-          <img src={course.image} alt={course.name} />
-          {/* Updated at: {stats} */}
+          <p>Course Rating: {course.rating} / 5</p>
+          <p>Holes: {course.holeCount}</p>
+          <div className="comparison-card-image"
+          style={{ backgroundImage: `url(${course.image})` }}
+          >
+          <img src={course.image} />
+          </div>
+          <br />
+          {/* <iframe 
+              width="500" 
+              height="270" 
+              frameborder="0" 
+              scrolling="no" 
+              marginheight="0" 
+              marginwidth="0" 
+              src={`https://maps.google.com/maps?q=${course.latitude},${course.longitude}&hl=es&z=14&amp;output=embed`}
+            >
+            </iframe>
+            <br />*/}
+            <small>
+              <a 
+                href={`https://maps.google.com/maps?q=${course.latitude},${course.longitude}&hl=es;z=14&amp;output=embed`} 
+                stylename="color:#0000FF;text-align:left" 
+                target="_blank"
+              >
+            View on Google Maps
+          </a>
+        </small> 
         </p>
       </main>
     </div>
