@@ -58,41 +58,43 @@ export default function State(props) {
         title={`Top Courses in ${state}`}
         description={`Top Courses in ${state}`}
       />
-
-      <main>
-        <h1 className="title">
+        <h4 className="title">
           Top Courses in {state}
-        </h1>
-
+        </h4>
         <p className="description">
           These are our best courses for {state} rated by the PDGA
           {/* , <br /> Updated at: {stats} */}
         </p>
-
-        <div className="grid">
-          { courses.map(course => {
-            return (<a href={`/courses/${state}/${course.id}`} key={i++} className="card">
-              <h4>{course.name}</h4>
-              <p>{course.city}, {course.state} - {course.zip}</p>         
-              <div className="row company-tile show-hover inherited-styles-for-exported-element">
-              {/* <div className="inner-triangle"></div> */}
-              <div className="company-tile-top">
-                <div className="company-features">
-                  <div className="company-score">
-                    <div className="company-score-bar">
-                      <div className="company-score-tube" style={{"width" : (course.rating * 20) + "%"}}></div>
-                    </div>
-                    
+        <div className="container">
+          <div className="linkBox-content">
+            <div className="row">
+              {courses.map(course => {
+                return (
+                  <div className="col-md-4" style={{marginBottom:20}}>
+                    <a href={`/courses/${state}/${course.id}`} key={i++} className="card">
+                      <h5>{course.name}</h5>
+                      <p>{course.city}, {course.state} {course.zip}</p>         
+                      {/* <div className="row company-tile">
+                        <div className="inner-triangle"></div>
+                        <div className="company-tile-top">
+                          <div className="company-features">
+                            <div className="company-score">
+                              <div className="company-score-bar">
+                                <div className="company-score-tube" style={{"width" : (course.rating * 20) + "%"}}></div>
+                              </div>                    
+                            </div>
+                          </div>
+                          <div><span className="small">{course.rating} / 5</span></div>
+                        </div>
+                      </div> */}
+                      <div>Rating: <span className="small">{course.rating}</span></div>
+                    </a>
                   </div>
-                </div>
-                <div><span className="small">{course.rating} / 5</span></div>
-              </div>
+                  )
+              })}
             </div>
-            </a>)
-          })}
+          </div>
         </div>
-      </main>
-      <h3><a href="/">Home</a></h3>
     </div>
     
   )

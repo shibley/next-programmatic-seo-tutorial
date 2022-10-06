@@ -17,18 +17,28 @@ export default function Home(props) {
   const states = props.states;
   let i = 0;
   return (
-    <div className="container">
-      <main>
-        <h1 class="hero-title">Easily Find Disc golf courses by state</h1>
-
-        <div className="grid">
-          {states.map(state => {
-            return (<a href={`/courses/${state}`} key={i++} className="card">
-              <h3>{state}</h3>
-            </a>)
-          })}
+    <>
+      <div className="container">      
+          <h1 className="hero-title">Easily Find Disc golf courses by state</h1>
+      </div>
+      <div className="linkBox-content">
+        <div className="container">
+          <div className="row">
+            {states.map(state => {
+              return (
+                <div className="col-md-4" style={{marginBottom:20}}>
+                  <a href={`/courses/${state}`} key={i++}>
+                    <div className="linkBox">
+                        <h2 className="linkBox-title">{state}</h2>
+                        See Courses
+                    </div>
+                  </a>
+                </div>
+                )
+            })}
+          </div>
         </div>
-      </main>
-    </div>
+      </div>
+    </>
   )
 }

@@ -34,8 +34,8 @@ nav {
     text-align: center;
     margin: 40px 0 20px;
 }
-/* 
-@media (min-width: 1200px){
+
+/* @media (min-width: 1200px){
     .container, .container-lg, .container-md, .container-sm, .container-xl {
         max-width: 1140px;
     }
@@ -55,14 +55,28 @@ nav {
     .container, .container-sm {
         max-width: 540px;
     }
-}
+} */
 .container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl {
     width: 100%;
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
-} */
+}
+
+.linkBox-content {
+    position: relative;
+    height: 100%;
+    background-color: #f0f4f8;
+}
+.linkBox {
+    border: 1px solid #000;
+    border-radius: 6px;
+    padding: 24px;
+    background-color: #fff;
+    color: #102a43;
+    height: 100%;
+}
 
 /* @media (min-width: 1200px){
     .h3 {
