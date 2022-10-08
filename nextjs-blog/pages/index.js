@@ -19,7 +19,7 @@ export default function Home(props) {
   return (
     <>
       <div className="container">      
-          <h1 className="hero-title">Easily Find Disc golf courses by state</h1>
+          <h1 className="hero-title">Find Disc golf courses by state</h1>
       </div>
       <div className="linkBox-content">
         <div className="container">
