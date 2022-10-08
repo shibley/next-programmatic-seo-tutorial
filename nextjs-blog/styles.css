@@ -34,7 +34,13 @@ nav {
     text-align: center;
     margin: 40px 0 20px;
 }
-
+.banner {
+    background: linear-gradient(252.24deg, #F7D6AF -3.4%, rgba(247,214,175,0.79262) 51.66%, rgba(247,214,175,0.33) 106.99%);
+    padding: 25px
+px
+ 30px 10px 35px;
+    margin: 0px 0px 25px 0px;
+}
 /* @media (min-width: 1200px){
     .container, .container-lg, .container-md, .container-sm, .container-xl {
         max-width: 1140px;
