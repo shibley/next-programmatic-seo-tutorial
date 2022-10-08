@@ -1,7 +1,7 @@
 export default function Footer() {
     return (
         <footer>
-            Copyright 2022 - Discgolfsite.com
+            Copyright 2022 - No0code.tools
         {/* <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
           target="_blank"
