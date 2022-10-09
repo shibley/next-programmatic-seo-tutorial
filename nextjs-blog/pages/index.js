@@ -35,7 +35,7 @@ export default function Home(props) {
               </div>
 
               <div className="col-lg-3 col-3 col-md-3">
-                <img className="banner-image" src="/assets/all_things_remote-d6ee1ee9e0eff538c3abb5d6cb64bc7f1014330ec3422323447f63a4efd3721f.png" />
+                <img className="banner-image" src="/all_things_remote-d6ee1ee9e0eff538c3abb5d6cb64bc7f1014330ec3422323447f63a4efd3721f.png" />
               </div>
 
             </div>

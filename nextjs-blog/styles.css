@@ -35,11 +35,25 @@ nav {
     margin: 40px 0 20px;
 }
 .banner {
-    background: linear-gradient(252.24deg, #F7D6AF -3.4%, rgba(247,214,175,0.79262) 51.66%, rgba(247,214,175,0.33) 106.99%);
+    background: linear-gradient(252.24deg, #1297b2 -3.4%, rgba(247,214,175,0.79262) 51.66%, rgba(247,214,175,0.33) 106.99%);
     padding: 25px
 px
  30px 10px 35px;
     margin: 0px 0px 25px 0px;
+}
+.banner-header {
+    font-size: 30px;
+    line-height: 42px;
+    color: #364C4C;
+}
+.banner-sub-header {
+    font-size: 18px;
+    line-height: 24px;
+    color: #808080;
+}
+.banner-image {
+    padding-left: 30px;
+    height: 100px;
 }
 /* @media (min-width: 1200px){
     .container, .container-lg, .container-md, .container-sm, .container-xl {
