@@ -10,7 +10,7 @@ const app = express();
 //port
 
 const port = 6400;
-const mongoCreds = `mongodb://127.0.0.1:27017/`;//admin:123456@process.env.MONGO_MOCK_DB_CREDS; // process.env.MONGO_MOCK_DB_CREDS
+const mongoCreds = `mongodb://127.0.0.1:27017/Wordle`;//admin:123456@process.env.MONGO_MOCK_DB_CREDS; // process.env.MONGO_MOCK_DB_CREDS
 
 //routes
 const productRoute = require("./routes/product");
