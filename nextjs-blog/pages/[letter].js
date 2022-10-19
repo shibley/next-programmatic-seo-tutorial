@@ -3,15 +3,16 @@ import { useRouter } from 'next/router';
 import { NextSeo } from 'next-seo';
 
 export async function getStaticPaths() {
-
-  // We need to fetch all of the words from our DB
-  const res = await fetch('http://localhost:6400/letters')
+  const res = await fetch(`http://localhost:6400/letters`)
   const letters = await res.json()
 
   // We need to adhere to the Next.js getStaticPaths structure
   // https://nextjs.org/docs/basic-features/data-fetching/get-static-paths
-  let paths = letters.map((x)=>{return{'params': {'slug': x}}})
-console.log(paths);
+  //let paths = products.map((x)=>{return{'params': {'product': [x.slug]}}})
+  const paths = letters.map((letter) => ({
+    params: { letter: letter },
+  }))
+  // console.log(paths);
   // For blocking see: https://nextjs.org/docs/api-reference/data-fetching/get-static-paths#fallback-blocking
   return {
     paths,
@@ -20,9 +21,9 @@ console.log(paths);
 }
 
 export async function getStaticProps({params}) {
-
+console.log(params);
   // Let's fetch the latest top ranking items in a category from our DB
-  const res = await fetch(`http://localhost:6400/words?letter=${params.slug}&position=0`)
+  const res = await fetch(`http://localhost:6400/words?letter=${params.letter}&position=0`)
   const words = await res.json()
 
   // Let's pick the 50 best ranked ones
@@ -40,9 +41,10 @@ export async function getStaticProps({params}) {
   };
 }
 
-export default function Slug(props) {
-  const router = useRouter()
-  const { slug } = router.query
+export default function Letter(props) {
+  const router = useRouter();
+  console.log(router.query);
+  const  slug  = router.query.letter;
   const stats = props.stats;
   const words = props.words;
   let i = 0;
