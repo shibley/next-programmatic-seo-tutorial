@@ -21,6 +21,7 @@ const cartRoute = require("./routes/cart");
 const userRoute = require("./routes/user");
 const authRoute = require("./routes/auth");
 const wordRoute = require("./routes/word");
+const letterRoute = require("./routes/letter");
 
 //middleware
 app.use(cors());
@@ -43,6 +44,7 @@ app.use("/carts", cartRoute);
 app.use("/users", userRoute);
 app.use("/auth", authRoute);
 app.use("/words", wordRoute);
+app.use("/letters", letterRoute);
 
 //mongoose
 mongoose.set("useFindAndModify", false);

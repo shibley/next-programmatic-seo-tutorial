@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const course = require("../controller/word");
+const word = require("../controller/word");
 
-router.get("/", course.getAllWords);
+router.get("/", word.getAllWords);
 // router.get("/states", course.getStates);
 // router.get("/state/:state", course.getCoursesInState);
 // router.post("/", product.addProduct);
