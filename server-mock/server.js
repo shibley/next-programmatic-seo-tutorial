@@ -22,6 +22,7 @@ const userRoute = require("./routes/user");
 const authRoute = require("./routes/auth");
 const wordRoute = require("./routes/word");
 const letterRoute = require("./routes/letter");
+const positionRoute = require("./routes/position");
 
 //middleware
 app.use(cors());
@@ -45,6 +46,7 @@ app.use("/users", userRoute);
 app.use("/auth", authRoute);
 app.use("/words", wordRoute);
 app.use("/letters", letterRoute);
+app.use("/positions", positionRoute);
 
 //mongoose
 mongoose.set("useFindAndModify", false);
