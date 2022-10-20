@@ -6,11 +6,16 @@ export async function getStaticPaths() {
   const res = await fetch(`http://localhost:6400/letters`)
   const letters = await res.json()
 
+  const res2 = await fetch(`http://localhost:6400/positions`)
+  const positions = await res2.json()
+
   // We need to adhere to the Next.js getStaticPaths structure
   // https://nextjs.org/docs/basic-features/data-fetching/get-static-paths
+
   const paths = letters.map((letter) => ({
-    params: { letter: '5-letter-words-with-' + letter + '-in-the-middle'},
+    params: { letter: '5-letter-words-with-' + letter + '-in-the-middle', position: '0' },
   }))
+
   //console.log(paths);
   // For blocking see: https://nextjs.org/docs/api-reference/data-fetching/get-static-paths#fallback-blocking
   return {
@@ -67,10 +72,11 @@ export default function Letter(props) {
         description={``}
       />
         <h1 className="title">
-          {slug} - Solve Today's Wordle
+          {slug} 
+          {/* - Solve Today's Wordle */}
         </h1>
         <p className="description">
-          {slug}
+           List of 5-letter words with A in the middle to help you solve today's Wordle or any other word puzzle you might be trying to figure out for the day!
           {/* , <br /> Updated at: {stats} */}
         </p>
         <div className="container">
