@@ -46,7 +46,7 @@ export default function State(props) {
   const stats = props.stats;
   const courses = props.topCourses;
   let i = 0;
-
+  console.log(courses.length);
   return (
     <div className="container">
       <Head>
@@ -58,14 +58,19 @@ export default function State(props) {
         title={`Top Courses in ${state}`}
         description={`Top Courses in ${state}`}
       />
+      <div className="container">
         <h4 className="title">
           Top Courses in {state}
         </h4>
-        <p className="description">
+        {/* <p className="description">
           These are our best courses for {state} rated by the PDGA
-          {/* , <br /> Updated at: {stats} */}
-        </p>
-        <div className="container">
+        </p> */}
+        <p className="description">
+          Learn all about disc golf in {state}. Below are the top {courses.length} {state} courses rated by the <a href="https://pdga.com" target={"_blank"}>PDGA</a>:
+          {/* Among these are 183 courses which have 18 or more holes.  */}
+          {/* Wisconsin is also home to 110 leagues and 48 stores that sell disc golf gear.   */}
+        </p> 
+        
           <div className="linkBox-content">
             <div className="row">
               {courses.map(course => {
