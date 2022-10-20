@@ -6,9 +6,6 @@ export async function getStaticPaths() {
   const res = await fetch(`http://localhost:6400/letters`)
   const letters = await res.json()
 
-  const res2 = await fetch(`http://localhost:6400/positions`)
-  const positions = await res2.json()
-
   // We need to adhere to the Next.js getStaticPaths structure
   // https://nextjs.org/docs/basic-features/data-fetching/get-static-paths
 
@@ -25,7 +22,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({params}) {
-  console.log(params);
+  //console.log(params);
   var myString = params.letter;
   var myRegexp = /(-.-)/gm;
   //var myRegexp = new RegExp("(?:^|\s)format_(.*?)(?:\s|$)", "g");
@@ -39,14 +36,14 @@ export async function getStaticProps({params}) {
   const res = await fetch(`http://localhost:6400/words?letter=${letterMatch}&position=2`)
   const words = await res.json()
 
-  // Let's pick the 50 best ranked ones
-  //const topCourses = courses.sort((a,b) => b.rating - a.rating).sort((a,b) => b.name - a.name).slice(0, 50);
+  const res2 = await fetch(`http://localhost:6400/letters`)
+  const letters = await res2.json()
 
   // Every time we statically generate this page we will have the time-stamped.
   const stats = new Date().toString()
 
   return { 
-    props: { stats: stats, words },
+    props: { stats: stats, words, letterMatch, letters },
     // Next.js will attempt to re-generate the page:
     // - When a request comes in
     // - At most once every 10 seconds
@@ -56,11 +53,12 @@ export async function getStaticProps({params}) {
 
 export default function Letter(props) {
   const router = useRouter();
-  //console.log(router.query);
   const  slug  = router.query.letter;
   const stats = props.stats;
   const words = props.words;
-  //console.log(words);
+  const letter = props.letterMatch;
+  const letters = props.letters;
+  console.log(letter);
   let i = 0;
 
   return (
@@ -71,19 +69,24 @@ export default function Letter(props) {
       </Head>
 
       <NextSeo
-        title={``}
-        description={``}
+        title={`5 Letter Words with '${letter}' in the Middle, Solve Today's Wordle`}
+        description={`List of 5-letter words with '${letter}' in the middle to help you solve today's Wordle or any other word puzzle you might be trying to figure out.`}
       />
         <h1 className="title">
-          {slug} 
+          5-Letter Words with '{letter}' in the Middle
           {/* - Solve Today's Wordle */}
         </h1>
         <p className="description">
-           List of 5-letter words with A in the middle to help you solve today's Wordle or any other word puzzle you might be trying to figure out for the day!
+           List of 5-letter words with '{letter}' in the middle to help you solve today's Wordle <br />or any other word puzzle you might be trying to figure out for the day!
           {/* , <br /> Updated at: {stats} */}
         </p>
+        <p>
+          There are a ton of fun word games to play, like the very popular Wordle, which involves solving for five-letter words. 
+          If you're having a hard time finding the right 5 letter word, we've created this list of 5-letter words with '{letter}' in the middle that 
+          should help you figure out the solution and help you win!
+        </p>
+        <hr></hr>
         <div className="container">
-          {/* <div className="linkBox-content"> */}
             <div className="row">
               {words.map(word => {
                 return (
@@ -93,7 +96,22 @@ export default function Letter(props) {
                   )
               })}
             </div>
-          {/* </div> */}
+            <div className="row">
+              <hr></hr>
+              <h2>Other middle letters:</h2>
+              <ul>
+                {letters.map(innerLetter => {
+                  if(letter !== innerLetter)
+                  {
+                    return (
+                      <li>
+                          <h5><a href={`5-letter-words-with-${innerLetter}-in-the-middle`}>5 letter words with '{innerLetter}' in the middle</a></h5>
+                      </li>
+                      )
+                    }
+                })}
+              </ul>
+            </div>
         </div>
     </div>
     
