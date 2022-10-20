@@ -13,7 +13,7 @@ export async function getStaticPaths() {
   // https://nextjs.org/docs/basic-features/data-fetching/get-static-paths
 
   const paths = letters.map((letter) => ({
-    params: { letter: '5-letter-words-with-' + letter + '-in-the-middle', position: '0' },
+    params: { position: '0', letter: '5-letter-words-with-' + letter + '-in-the-middle' },
   }))
 
   //console.log(paths);
@@ -30,7 +30,10 @@ export async function getStaticProps({params}) {
   var myRegexp = /(-.-)/gm;
   //var myRegexp = new RegExp("(?:^|\s)format_(.*?)(?:\s|$)", "g");
   var match = myRegexp.exec(myString);
-  var letterMatch = match[1].replace('-', '').replace('-', '');
+  var letterMatch = '';
+  if(match != undefined){
+    letterMatch = match[1].replace('-', '').replace('-', '');
+  }
 
   // Let's fetch the latest top ranking items in a category from our DB
   const res = await fetch(`http://localhost:6400/words?letter=${letterMatch}&position=2`)
@@ -80,17 +83,17 @@ export default function Letter(props) {
           {/* , <br /> Updated at: {stats} */}
         </p>
         <div className="container">
-          <div className="linkBox-content">
+          {/* <div className="linkBox-content"> */}
             <div className="row">
               {words.map(word => {
                 return (
-                  <div className="col-md-4" style={{marginBottom:20}}>
+                  <div className="col-md-2" style={{marginBottom:20}}>
                       <h5>{word.word}</h5>
                   </div>
                   )
               })}
             </div>
-          </div>
+          {/* </div> */}
         </div>
     </div>
     
