@@ -8,11 +8,10 @@ export async function getStaticPaths() {
 
   // We need to adhere to the Next.js getStaticPaths structure
   // https://nextjs.org/docs/basic-features/data-fetching/get-static-paths
-  //let paths = products.map((x)=>{return{'params': {'product': [x.slug]}}})
   const paths = letters.map((letter) => ({
-    params: { letter: letter },
+    params: { letter: '5-letter-words-with-' + letter + '-in-the-middle'},
   }))
-  // console.log(paths);
+  //console.log(paths);
   // For blocking see: https://nextjs.org/docs/api-reference/data-fetching/get-static-paths#fallback-blocking
   return {
     paths,
@@ -21,9 +20,15 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({params}) {
-console.log(params);
+  console.log(params);
+  var myString = params.letter;
+  var myRegexp = /(-.-)/gm;
+  //var myRegexp = new RegExp("(?:^|\s)format_(.*?)(?:\s|$)", "g");
+  var match = myRegexp.exec(myString);
+  var letterMatch = match[1].replace('-', '').replace('-', '');
+
   // Let's fetch the latest top ranking items in a category from our DB
-  const res = await fetch(`http://localhost:6400/words?letter=${params.letter}&position=0`)
+  const res = await fetch(`http://localhost:6400/words?letter=${letterMatch}&position=2`)
   const words = await res.json()
 
   // Let's pick the 50 best ranked ones
@@ -43,10 +48,11 @@ console.log(params);
 
 export default function Letter(props) {
   const router = useRouter();
-  console.log(router.query);
+  //console.log(router.query);
   const  slug  = router.query.letter;
   const stats = props.stats;
   const words = props.words;
+  //console.log(words);
   let i = 0;
 
   return (
@@ -73,7 +79,7 @@ export default function Letter(props) {
               {words.map(word => {
                 return (
                   <div className="col-md-4" style={{marginBottom:20}}>
-                      <h5>{word.name}</h5>
+                      <h5>{word.word}</h5>
                   </div>
                   )
               })}
