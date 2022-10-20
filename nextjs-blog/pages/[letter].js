@@ -77,11 +77,11 @@ export default function Letter(props) {
           {/* - Solve Today's Wordle */}
         </h1>
         <p className="description">
-           List of 5-letter words with '{letter}' in the middle to help you solve today's Wordle <br />or any other word puzzle you might be trying to figure out for the day!
+           List of 5-letter words with '{letter}' in the middle to help you solve today's Wordle or any other word puzzle you might be trying to figure out for the day!
           {/* , <br /> Updated at: {stats} */}
         </p>
         <p>
-          There are a ton of fun word games to play, like the very popular Wordle, which involves solving for five-letter words. 
+          There are a ton of fun word games to play, like the very popular game Wordle, which involves solving for five-letter words. 
           If you're having a hard time finding the right 5 letter word, we've created this list of 5-letter words with '{letter}' in the middle that 
           should help you figure out the solution and help you win!
         </p>
@@ -97,20 +97,22 @@ export default function Letter(props) {
               })}
             </div>
             <div className="row">
-              <hr></hr>
-              <h2>Other middle letters:</h2>
-              <ul>
-                {letters.map(innerLetter => {
-                  if(letter !== innerLetter)
-                  {
-                    return (
-                      <li>
-                          <h5><a href={`5-letter-words-with-${innerLetter}-in-the-middle`}>5 letter words with '{innerLetter}' in the middle</a></h5>
-                      </li>
-                      )
-                    }
-                })}
-              </ul>
+              <div className="col-md-12">
+                <hr></hr>
+                <h2>Other middle letters:</h2>
+                <ul>
+                  {letters.map(innerLetter => {
+                    if(letter !== innerLetter)
+                    {
+                      return (
+                        <li>
+                            <h5><a href={`5-letter-words-with-${innerLetter}-in-the-middle`}>5 letter words with '{innerLetter}' in the middle</a></h5>
+                        </li>
+                        )
+                      }
+                  })}
+                </ul>
+              </div>
             </div>
         </div>
     </div>
