@@ -64,12 +64,11 @@ export default function Letter(props) {
   return (
     <div className="container">
       <Head>
-        <title></title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <NextSeo
-        title={`5 Letter Words with '${letter}' in the Middle, Solve Today's Wordle`}
+        title={`5 Letter Words with '${letter}' in the Middle`}
         description={`List of 5-letter words with '${letter}' in the middle to help you solve today's Wordle or any other word puzzle you might be trying to figure out.`}
       />
         <h1 className="title">
@@ -98,6 +97,10 @@ export default function Letter(props) {
             </div>
             <div className="row">
               <div className="col-md-12">
+                <p>
+                  Some words on the list might not be accepted by the official Wordle game. A good tip is to look for the words you're familiar with and try the ones with the most vowels first. 
+                  That will narrow down your options, which will make it easier for you to get to the correct Wordle answer.
+                </p>
                 <hr></hr>
                 <h2>Other middle letters:</h2>
                 <ul>
