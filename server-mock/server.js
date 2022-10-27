@@ -10,10 +10,9 @@ const app = express();
 //port
 
 const port = 6400;
-const mongoCreds = `mongodb://127.0.0.1:27017/Wordle`;//admin:123456@process.env.MONGO_MOCK_DB_CREDS; // process.env.MONGO_MOCK_DB_CREDS
+const mongoCreds = `mongodb://127.0.0.1:27017/Calcs`;//admin:123456@process.env.MONGO_MOCK_DB_CREDS; // process.env.MONGO_MOCK_DB_CREDS
 
 //routes
-const productRoute = require("./routes/product");
 const courseRoute = require("./routes/course");
 const videoCategoryRoute = require("./routes/videoCategory");
 const homeRoute = require("./routes/home");
@@ -23,6 +22,7 @@ const authRoute = require("./routes/auth");
 const wordRoute = require("./routes/word");
 const letterRoute = require("./routes/letter");
 const positionRoute = require("./routes/position");
+const kgsRoute = require("./routes/kg");
 
 //middleware
 app.use(cors());
@@ -38,7 +38,6 @@ app.set("views", "views");
 app.disable("view cache");
 
 app.use("/", homeRoute);
-app.use("/products", productRoute);
 app.use("/courses", courseRoute);
 app.use("/videoCategories", videoCategoryRoute);
 app.use("/carts", cartRoute);
@@ -47,6 +46,7 @@ app.use("/auth", authRoute);
 app.use("/words", wordRoute);
 app.use("/letters", letterRoute);
 app.use("/positions", positionRoute);
+app.use("/kgs", kgsRoute);
 
 //mongoose
 mongoose.set("useFindAndModify", false);

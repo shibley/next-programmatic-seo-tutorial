@@ -3,7 +3,7 @@ export default function Navbar() {
         <div className="container">
             <nav>
                 <h3>
-                    <a className="nav-logo" href="/">Bityreads.com</a>
+                    <a className="nav-logo" href="/">Aggrestat.com</a>
                 </h3>
                 {/* <ul className="nav-link-list ">
                     <li className="nav-link"><a href="/">Home</a></li>
