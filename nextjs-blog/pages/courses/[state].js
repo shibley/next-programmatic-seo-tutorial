@@ -70,7 +70,14 @@ export default function State(props) {
           {/* Among these are 183 courses which have 18 or more holes.  */}
           {/* Wisconsin is also home to 110 leagues and 48 stores that sell disc golf gear.   */}
         </p> 
-        
+        <p>
+          Many city parks in {state} house free disc golf courses, while converted golf courses and private pay-to-play properties continue to appear.
+        </p>
+        <p>
+          One of the great features disc golf shares with golf is that they are both played in beautiful settings. A nine-hole disc golf course 
+          can be established on as little as five acres of land, and a championship level 18-hole course uses 30 to 40 acres. Disc golf courses 
+          can coexist with existing park facilities and activity areas, with the ideal location combining wooded and open terrains and a variety of topographical change.
+        </p>
           <div className="linkBox-content">
             <div className="row">
               {courses.map(course => {

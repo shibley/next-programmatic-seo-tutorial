@@ -112,15 +112,19 @@ export default function Id(props) {
           {course.name}
         </h4>
         <br />
-        <p className="description">
+        {/* <p className="description"> */}
           <p>Course Rating: {course.rating} / 5</p>
           <p>Holes: {course.holeCount}</p>
           <div className="comparison-card-image"
-          style={{ backgroundImage: `url(${course.image})` }}
-          >
-          <img src={course.image} />
+            style={{ backgroundImage: `url(${course.image})` }}
+            >
+            <img src={course.image} />
           </div>
           <br />
+          <p>
+            Disc golf is designed to be enjoyed by people of all ages, gender identity, and economic status, making it a great lifetime fitness activity. 
+            Because disc golf is so easy to learn, no one is excluded; players merely match their pace to their capabilities and proceed from there.
+          </p>
           {/* <iframe 
               width="500" 
               height="270" 
@@ -132,7 +136,7 @@ export default function Id(props) {
             >
             </iframe>
             <br />*/}
-            <small>
+
               <a 
                 href={`https://maps.google.com/maps?q=${course.latitude},${course.longitude}&hl=es;z=14&amp;output=embed`} 
                 stylename="color:#0000FF;text-align:left" 
@@ -140,8 +144,8 @@ export default function Id(props) {
               >
             View on Google Maps
           </a>
-        </small> 
-        </p>
+
+        {/* </p> */}
       </main>
     </div>
   )
