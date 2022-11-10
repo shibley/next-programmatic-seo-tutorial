@@ -8,16 +8,16 @@ export default function MyApp({ Component, pageProps }) {
   return (
     <>
     <DefaultSeo
-      titleTemplate={'%s | BityReads'}
+      titleTemplate={'%s | Aggresstat'}
       openGraph={{
           type: 'website',
           locale: 'en_IE',
-          url: 'https://bityreads.com/',
-          site_name: 'BityReads',
+          url: 'https://aggrestat.com/',
+          site_name: 'Aggrestat',
       }}
     />
     <Layout>
-        <Script
+        {/* <Script
             src="https://www.googletagmanager.com/gtag/js?id=G-YXNG3H09VF"
             strategy="afterInteractive">
         </Script>
@@ -29,7 +29,7 @@ export default function MyApp({ Component, pageProps }) {
 
             gtag('config', 'G-YXNG3H09VF');
             `}
-        </Script>
+        </Script> */}
         {/* <Script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"

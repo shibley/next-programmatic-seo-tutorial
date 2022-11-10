@@ -81,9 +81,9 @@ export default function Calc(props) {
         <hr></hr>
         <table>
             <tr>
-              <td className="right" rowspan="2">150&nbsp;lbs&nbsp; * &nbsp;</td>
+              <td className="right" rowSpan="2">150&nbsp;lbs&nbsp; * &nbsp;</td>
               <td className="underline">0.45359237&nbsp;kg</td>
-              <td className="left" rowspan="2">&nbsp;=&nbsp;68.0388555&nbsp;kg</td>
+              <td className="left" rowspan="2"><strong>&nbsp;=&nbsp;68.0388555&nbsp;kg</strong></td>
             </tr>
             <tr>
               <td>1 lbs</td>
@@ -92,7 +92,7 @@ export default function Calc(props) {
       </p>
       <div className="text">
         <p className="description">
-        <iframe width="400" height="250" src="https://www.youtube.com/embed/NLNiWS4rPQ0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="400" height="250" src="https://www.youtube.com/embed/NLNiWS4rPQ0" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </p>
         
       </div>
