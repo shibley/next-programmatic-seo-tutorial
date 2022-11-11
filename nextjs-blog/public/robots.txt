@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://bityreads.com
+Host: https://aggrestat.com
 
 # Sitemaps
-Sitemap: https://bityreads.com/sitemap.xml
+Sitemap: https://aggrestat.com/sitemap.xml
