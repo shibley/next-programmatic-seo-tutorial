@@ -109,6 +109,81 @@ export default function Calc(props) {
         Likewise the question how many kilogram in 150 pound has the answer of 68.0388555 kg in 150 lbs.
       </p>
       <hr></hr>
+      <h2>How Many Kilograms are in a Pound?</h2>
+      <p>
+        The history of the pound is long and complicated, dating back to the Roman Empire. 
+        The pound is a unit of measurement that has been used in many different ways throughout history. 
+        The pound has also been a part of the United States' standard system of weights and measures since 1858. 
+        The pound is currently defined as 0.45359237 kilograms. This means that there are approximately 2.20462262 pounds in a kilogram. 
+      </p>
+      <h2>The History of the Pound</h2>
+      <p>
+        The pound is a unit of measurement that has been used in many different ways throughout history. 
+        The pound has its origins in the Roman Empire, where it was originally used as a unit of weight. 
+        The pound was also used as a unit of currency in the Middle Ages. 
+        The pound is currently defined as 0.45359237 kilograms. This means that there are approximately 2.20462262 pounds in a kilogram. 
+      </p>
+      <p>
+        The pound is still used today as a unit of measurement, though it has largely been replaced by the metric system. 
+        The pound is most commonly used in the United States, where it is used to measure a variety of things, including weight, height, and even fabric.
+      </p>
+      <h2>The Evolution of the Pound</h2>
+      <p>
+        The pound has undergone a number of changes throughout its history. In the Middle Ages, the pound was a unit of currency. 
+        In the 18th century, the pound was redefined as a unit of weight. The current definition of the pound was established in 1858. 
+        The pound is currently defined as 0.45359237 kilograms. This means that there are approximately 2.20462262 pounds in a kilogram.
+      </p>
+      <p>
+        The pound is a unit of measurement that is used in a variety of different ways. In the United Kingdom, the pound is used as a unit of currency. 
+        In the United States, the pound is used as a unit of weight. The pound is also used as a unit of measurement in a variety of other countries.
+      </p>
+      <h2>The current value of the Pound</h2>
+      <p>
+        The value of the pound has fluctuated throughout its history. 
+        The pound is currently worth approximately 0.45359237 kilograms. This means that there are approximately 2.20462262 pounds in a kilogram.
+      </p>
+      <p>
+        The value of the pound has been affected by many factors over the years. These include inflation, the strength of the economy, and political stability. 
+        The value of the pound is also affected by the values of other currencies. When the value of the pound goes up, it means that it is worth more than other currencies. 
+        When the value of the pound goes down, it means that it is worth less than other currencies. </p><p>The value of the pound is important to many people. 
+        It can affect the price of imported goods, the cost of travel, and the amount of money that people can send abroad. 
+        The value of the pound can also affect the economy of a country. A strong pound can help to create jobs and attract investment. 
+        A weak pound can cause inflation and make it difficult for businesses to compete.
+      </p>
+      <h2>How to Convert Kilograms to Pounds</h2>
+      <p>
+        There are a number of ways to convert kilograms to pounds. One way to do this is to use a calculator. Another way to do this is to use a conversion chart. 
+        A conversion chart can be found online or in a variety of books and other publications. </p><p>To use a conversion chart, simply find the conversion factor for kilograms to pounds. 
+        This can be done by finding the number of pounds in one kilogram. Once the conversion factor is known, simply multiply the number of kilograms by the conversion factor to 
+        find the number of pounds.
+      </p>
+      <h2>How to Convert Pounds to Kilograms</h2>
+      <p>
+        There are a number of ways to convert pounds to kilograms. One way to do this is to use a calculator. Another way to do this is to use a conversion chart. 
+        A conversion chart can be found online or in a variety of books and other publications.
+      </p>
+      <p>
+        To use a conversion chart, simply find the pounds value on the left hand side of the chart and follow the line over to the right hand side to find the 
+        corresponding kilograms value. For example, if the chart lists a value of 1 pound as 0.45 kilograms, this means that 1 pound is equal to 0.45 kilograms.
+      </p>
+      <h2>The Benefits of Converting Kilograms to Pounds</h2>
+      <p>
+        There are a number of benefits to converting kilograms to pounds. One benefit is that it makes it easier to compare weights between different systems. 
+        Another benefit is that it can help to make calculations more accurate.
+      </p>
+      <p>
+        Another benefit of converting kilograms to pounds is that it allows you to easily convert between the two units of measurement. 
+        This can be helpful when you are trying to figure out how much something weighs in either unit of measurement.
+      </p>
+      <h2>The Benefits of Converting Pounds to Kilograms</h2>
+      <p>
+        There are a number of benefits to converting pounds to kilograms. One benefit is that it makes it easier to compare weights between different systems. 
+        Another benefit is that it can help to make calculations more accurate.
+      </p>
+      <p>
+        Another benefit of converting pounds to kilograms is that it allows for more consistent measurements. When using the same system of measurement, there is less room for error. 
+        This can be especially important when measuring things like medication or chemicals.
+      </p>
       <div>
         <h2>Alternative spellings</h2>
       </div>
@@ -118,17 +193,6 @@ export default function Calc(props) {
         150 Pounds in kg, 150 Pound to Kilogram, 150 Pound in Kilogram, 150 lbs to kg, 
         150 lbs in kg, 150 lbs to Kilograms, 150 lbs in Kilograms, 150 lbs to Kilogram, 150 lbs in Kilogram
       </p>
-        {/* <div className="container">
-            <div className="row">
-              {words.map(word => {
-                return (
-                  <div className="col-md-2" style={{marginBottom:20}}>
-                      <h5>{word.word}</h5>
-                  </div>
-                  )
-              })}
-            </div>
-        </div> */}
     </div>
     
   )
