@@ -26,6 +26,8 @@ const homeRoute = require("./routes/home");
 const cartRoute = require("./routes/cart");
 const userRoute = require("./routes/user");
 const authRoute = require("./routes/auth");
+const cityRoute = require("./routes/city");
+
 
 //middleware
 app.use(cors());
@@ -47,6 +49,7 @@ app.use("/videoCategories", videoCategoryRoute);
 app.use("/carts", cartRoute);
 app.use("/users", userRoute);
 app.use("/auth", authRoute);
+app.use("/cities", cityRoute);
 
 //mongoose
 mongoose.set("useFindAndModify", false);
