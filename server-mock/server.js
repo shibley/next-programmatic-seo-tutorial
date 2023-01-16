@@ -10,7 +10,13 @@ const app = express();
 //port
 
 const port = 6400;
-const mongoCreds = `mongodb://127.0.0.1:27017/`;//admin:123456@process.env.MONGO_MOCK_DB_CREDS; // process.env.MONGO_MOCK_DB_CREDS
+const mongoCreds = `mongodb+srv://admin:5hibleyB@cluster0.vymak.mongodb.net/programmatic-seo?authSource=admin&replicaSet=atlas-106bqn-shard-0&w=majority&readPreference=primary&retryWrites=true&ssl=true`;
+
+//`mongodb://127.0.0.1:27017/Calcs`;
+
+//admin:123456@process.env.MONGO_MOCK_DB_CREDS; // process.env.MONGO_MOCK_DB_CREDS
+
+//mongodb+srv://admin:5hibleyB@cluster0.vymak.mongodb.net/strapi-api?authSource=admin&replicaSet=atlas-106bqn-shard-0&w=majority&readPreference=primary&retryWrites=true&ssl=true
 
 //routes
 const productRoute = require("./routes/product");
